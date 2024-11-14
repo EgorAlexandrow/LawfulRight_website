@@ -31,7 +31,7 @@
     margin-right: 10px;
     align-self: center;
 }
-.address-text {
+.address-text-header {
     display: flex;
     flex-direction: column;
     line-height: 1;
@@ -50,7 +50,7 @@
 .header-logo {
     margin-right: 10px;
 }
-.schedule {
+.schedule-header {
     color: black;
     font-size: 14px;
     line-height: 1;
@@ -67,11 +67,7 @@
         height: 18px;
     }
     .title-logo-header {
-        font-family: "IBM Plex Serif", serif;
-        font-weight: 500;
-        font-style: normal;
         font-size: 12px;
-        color: black;
     }
     .head-nav {
         display: none;
@@ -115,7 +111,7 @@
         padding: 2px;
         text-align: center;
     }
-    .schedule {
+    .schedule-header {
         font-size: 7px;
     }
 }
@@ -124,7 +120,7 @@
     <nav class="navbar navbar-expand nav-ex-header">
         <div class="container header-container">
             <a class="navbar-brand-header" href="{% url 'homepage:index' %}">
-                <img src="{% static 'img/logo.svg' %}" alt="Законное право" class="header-logo">
+                <img src="{% static 'img/black-logo.svg' %}" alt="Законное право" class="header-logo">
                 <span class="title-logo-header">Законное право</span>
             </a>
             <img src="/static/img/hamburger.svg" alt="Toggle-Menu" class="toggle-menu-icon">
@@ -157,8 +153,8 @@
                     <li class="header-nav-item">
                         <a class="nav-link" href="...">
                             <div class="address-container">
-                                <img src="/static/img/location.svg" class="location-icon">
-                                <div class="address-text">
+                                <img src="/static/img/blue-location.svg" class="location-icon">
+                                <div class="address-text-header">
                                     <div>г. Липецк</div>
                                     <div>пр. Победы, д.29, оф. 530</div>
                                     <div>БЦ "Виктория"</div>
@@ -195,8 +191,8 @@
             <div class="header-contact">
                 <button type="button" class="btn header-contact">
                     <div>8 980 350 07 89</div>
-                    <div class="schedule">пн.-чт. с 9:00 до 18:00</div>
-                    <div class="schedule">пт. с 9:00 до 17:00</div>
+                    <div class="schedule-header">пн.-чт. с 9:00 до 18:00</div>
+                    <div class="schedule-header">пт. с 9:00 до 17:00</div>
                 </button>
             </div>
         </div>

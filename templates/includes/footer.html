@@ -1,0 +1,213 @@
+{% load static %}
+<style>
+.footer {
+    background-color: #667CA3;
+}
+.navbar-brand-footer {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+.footer-logo {
+    margin-right: 10px;
+}
+.title-logo-footer {
+    font-family: "IBM Plex Serif", serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 23px;
+    color: white;
+}
+.footer-logo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.footer-social {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+.social-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 41px;
+    height: 72px;
+    background-image: url('/static/img/white-background-for-socials.svg');
+    margin-top: 20px;
+}
+.interactive-map {
+    width: 676px;
+    height: 223px;
+    border-radius: 20px;
+    background-color: gray;
+}
+.footer-contact {
+    color: white;
+    font-size: 30px;
+    border: none;
+    text-align: center;
+}
+.schedule-footer {
+    color: white;
+    font-size: 14px;
+    line-height: 1;
+}
+.email-link {
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
+    margin-top: 5px;
+}
+.address-text-footer {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    font-size: 14px;
+    text-align: left;
+    margin-top: 10px;
+}
+@media (max-width: 768px) {
+    .footer {
+        background-color: white;
+    }
+    .navbar-brand-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .footer-logo {
+        content: url('/static/img/blue-logo.svg');
+        width: 79px;
+        height: 33px;
+    }
+    .title-logo-footer {
+        color: #667CA3;
+        font-size: 23px;
+    }
+    .social-link {
+        width: 41px;
+        height: 72px;
+        background-image: url('/static/img/blue-background-for-socials.svg');
+        margin-top: 20px;
+    }
+    .vk {
+        content: url('/static/img/white-vk.svg');
+    }
+    .tg {
+        content: url('/static/img/white-tg.svg');
+    }
+    .dzen {
+        content: url('/static/img/white-dzen.svg')
+    }
+    .youtube {
+        content: url('/static/img/white-youtube.svg')
+    }
+    .interactive-map {
+        width: 100%;
+        height: 266px;
+        border-radius: 20px;
+        background-color: grey;
+    }
+    .footer-contact {
+        color: #667CA3;
+        font-size: 30px;
+        padding-right: 28px;
+    }
+    .schedule-footer {
+        color: #667CA3;
+        font-size: 14px;
+    }
+    .email-link {
+        color: #667CA3;
+        font-size: 30px;
+    }
+    .location-icon {
+        content: url('/static/img/blue-location.svg')
+    }
+    .address-text-footer {
+        color: #667CA3;
+        font-size: 14px;
+    }
+    /* Дополнительные стили для отображения в столбик */
+    .footer-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+    .footer-logo-section {
+        order: 1;
+    }
+    .footer-social {
+        order: 2;
+    }
+    .interactive-map {
+        order: 3;
+        margin-top: 20px;
+    }
+    .footer-contact {
+        order: 4;
+        margin-top: 20px;
+    }
+    .footer-email {
+        order: 5;
+        margin-top: 20px;
+    }
+    .address-container {
+        order: 6;
+        margin-top: 20px;
+    }
+}
+</style>
+<footer class="footer py-3">
+    <nav class="navbar navbar-expand nav-ex-footer">
+        <div class="container footer-container">
+            <div class="footer-logo-section">
+                <a class="navbar-brand-footer" href="{% url 'homepage:index' %}">
+                    <img src="/static/img/white-logo.svg" alt="Законное право" class="footer-logo">
+                    <span class="title-logo-footer">Законное право</span>
+                </a>
+                <div class="footer-social">
+                    <a href="https://vk.com/zakpravo" target="_blank" class="social-link">
+                        <img src="/static/img/blue-vk.svg" alt="VK" class="social-icon vk" style="width: 26px; height: 16px;">
+                    </a>
+                    <a href="https://t.me/zakpravo" target="_blank" class="social-link">
+                        <img src="/static/img/blue-tg.svg" alt="Telegram" class="social-icon tg" style="width: 26px; height: 20px;">
+                    </a>
+                    <a href="https://dzen.ru/id/5f2d19a7140573681b9d917a" target="_blank" class="social-link">
+                        <img src="/static/img/blue-dzen.svg" alt="Dzen" class="social-icon dzen" style="width: 26px; height: 26px;">
+                    </a>
+                    <a href="https://www.youtube.com/channel/UC7994RrL-e_6wLRiYmfY1hA" target="_blank" class="social-link">
+                        <img src="/static/img/blue-youtube.svg" alt="YouTube" class="social-icon youtube" style="width: 26px; height: 26px;">
+                    </a>
+                </div>
+            </div>
+            <div class="interactive-map">
+            </div>
+            <div class="footer-contact">
+                <button type="button" class="btn footer-contact">
+                    <div>8 980 350 07 89</div>
+                    <div class="schedule-footer">пн.-чт. с 9:00 до 18:00</div>
+                    <div class="schedule-footer">пт. с 9:00 до 17:00</div>
+                </button>
+                <div class="footer-email">
+                    <a href="mailto:zakonnoe@list.ru" class="email-link">zakonnoe@list.ru</a>
+                </div>
+                <a class="nav-link" href="...">
+                    <div class="address-container">
+                        <img src="/static/img/white-location.svg" class="location-icon">
+                        <div class="address-text-footer">
+                            <div>г. Липецк</div>
+                            <div>пр. Победы, д.29, оф. 530</div>
+                            <div>БЦ "Виктория"</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </nav>
+</footer>
