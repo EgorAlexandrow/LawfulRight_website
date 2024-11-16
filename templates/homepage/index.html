@@ -2,7 +2,64 @@
 {% block title %}Законное право{% endblock title %}
 {% block content %}
 <style>
+.block-title {
+    font-family: "IBM Plex Serif", serif;
+    font-weight: 500;
+    font-style: bold;
+    font-size: 60px;
+    color: black;
+    text-align: center;
+}
+.help-line {
+    font-size: 24px;
+    text-align: left;
+    line-height: 0.1; 
+}
+.feedback {
+    margin-bottom: 40px;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 19px;
+}
+.review-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.review-square {
+    flex: 1 1 calc(33.333% - 20px);
+    border: 1px solid #D9D9D9;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 15px;
+}
+.review-square.center {
+    background-color: #D9D9D9;
+}
 </style>
-<div>
+<div class="main-page-container">
+    <div class="first-block"></div>
+    <div class="our-services">
+        <p class="block-title">НАШИ <span style="color: #667CA3;">УСЛУГИ</span></p>
+    </div>
+    <div class="about"></div>
+    <div class="choice">
+        <p class="block-title" style="text-align: left;">ПОЧЕМУ <span style="color: #667CA3;">ВЫБИРАЮТ НАС?</span></p>
+        <p class="help-line">Преимущества работы с нами</p>
+    </div>
+    <div class="feedback">
+        <p class="block-title">ЧТО О НАС <span style="color: #667CA3;">ГОВОРЯТ</span></p>
+        <div class="review-container">
+            {% for review in reviews %}
+                <div class="review-square {% if forloop.counter0 == reviews|length|divisibleby:2|add:1 %}center{% endif %}">
+                    <p>{{ review.user_name }}</p>
+                    <p>«{{ review.comment }}»</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 </div>
 {% endblock content %}
