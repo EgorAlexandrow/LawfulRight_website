@@ -1,5 +1,8 @@
 from django.shortcuts import render
 
+from homepage.models import Services
+
 
 def index(request):
-   return render(request, 'homepage/index.html')
+   services = Services.objects.filter(is_published=True)
+   return render(request, 'homepage/index.html', {'services': services})
