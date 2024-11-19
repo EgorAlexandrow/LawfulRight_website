@@ -10,11 +10,6 @@
     color: black;
     text-align: center;
 }
-.our-service_img {
-    width: 100%;
-    height: 737px;
-    object-fit: cover;
-}
 .advantages {
     font-size: 24px;
     text-align: left;
@@ -27,6 +22,39 @@
     font-weight: normal;
     font-style: normal;
     font-size: 19px;
+}
+.solicitor {
+    width: 369px;
+    height: 113px;
+}
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+.our-service_img {
+    width: 100%;
+    height: 737px;
+    object-fit: cover;
+}
+.solicitor {
+    position: absolute;
+    bottom: 160px;
+    left: 10px;
+    background: rgba(133, 216, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 10px;
+    border-radius: 20px;
+}
+.solicitor-name {
+    text-align: center;
+    margin: 0;
+    font-size: 19px;
+    color: white;
+}
+.solicitor-experience {
+    text-align: center;
+    color: black;
+    font-size: 16px;
 }
 .service-container {
     display: flex;
@@ -122,7 +150,13 @@
                     </div>
                 {% endfor %}
             </div>
-            <img src="/static/img/our-service.svg" class="our-service_img">
+            <div class="image-container">
+                <img src="/static/img/our-service.svg" class="our-service_img">
+                <div class="solicitor">
+                    <p class="solicitor-name">Вязников Александ Александрович</p>
+                    <p class="solicitor-experience">Юрист с опытом более 10-ти лет</p>
+                </div>
+            </div>
             <div class="service-squares right-squares">
                 {% for service in services|slice:"4:" %}
                     <div class="service-square-right">
