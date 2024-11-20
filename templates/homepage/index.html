@@ -2,6 +2,15 @@
 {% block title %}Законное право{% endblock title %}
 {% block content %}
 <style>
+@font-face {
+    font-family: 'Evolventa';
+    src:url('/static/fonts/Evolventa-Regular.ttf') format('truetype'),
+        url('/static/fonts/Evolventa-Oblique.ttf') format('truetype'),
+        url('/static/fonts/Evolventa-BoldOblique.ttf') format('truetype'),
+        url('/static/fonts/Evolventa-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 .block-title {
     font-family: "IBM Plex Serif", serif;
     font-weight: 500;
@@ -11,6 +20,10 @@
     text-align: center;
 }
 .advantages {
+    color: black;
+    font-family: "Evolventa", bold;
+    font-weight: 500;
+    font-style: bold;
     font-size: 24px;
     text-align: left;
     line-height: 0.1; 
@@ -40,7 +53,7 @@
     position: absolute;
     bottom: 160px;
     left: 10px;
-    background: rgba(133, 216, 255, 0.2);
+    background: rgba(133, 216, 255, 0.3);
     backdrop-filter: blur(10px);
     padding: 10px;
     border-radius: 20px;
@@ -48,12 +61,18 @@
 .solicitor-name {
     text-align: center;
     margin: 0;
+    font-family: "Evolventa", bold;
+    font-weight: 600;
+    font-style: bold;
     font-size: 19px;
     color: white;
 }
 .solicitor-experience {
     text-align: center;
     color: black;
+    font-family: "Evolventa", oblique;
+    font-weight: 500;
+    font-style: italic;
     font-size: 16px;
 }
 .service-container {
@@ -86,6 +105,9 @@
     color: #667CA3;
     font-size: 24px;
     margin: 0;
+    font-family: "Evolventa", bold;
+    font-weight: 600;
+    font-style: bold;
 }
 .service-square-left img {
     width: 105px;
@@ -97,44 +119,115 @@
     height: 105px;
     align-self: flex-start;
 }
-.service-square-left button, .service-square-right button {
+.service-square-left button {
     width: 212px;
     height: 41px;
     background: linear-gradient(to right, #2C7DFF, #667CA3);
     border-top-left-radius: 30px;
     border-bottom-right-radius: 30px;
     color: white;
+    font-family: "Evolventa", bold;
+    font-weight: 500;
+    font-style: bold;
     font-size: 14px;
     border-color: #667CA3;
     position: absolute;
+    bottom: 15px;
+    box-shadow: 
+        0 -4px 10px 0 #667CA3,
+        0 10px 16px 0 grey;
+}
+.service-square-right button {
+    width: 212px;
+    height: 41px;
+    background: linear-gradient(to right, #2C7DFF, #667CA3);
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    color: white;
+    font-family: "Evolventa", bold;
+    font-weight: 500;
+    font-style: bold;
+    font-size: 14px;
+    border-color: #667CA3;
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
     box-shadow: 
         0 -4px 10px 0 #667CA3,
         0 10px 16px 0 grey;
 }
 .service-square-left button:hover, .service-square-right button:hover {
     border-color: #667CA3;
+    color: white;
 }
 .service-square-content {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
 }
-.service-square-left a, .service-square-right a {
-    position: absolute;
-    bottom: 15px;
-    width: 212px;
-    height: 41px;
+.modal-content {
+    border-radius: 20px !important;
 }
-.service-square-left a {
-    left: 20px;
+.modal-title-text {
+    color: #667CA3;
+    font-family: "Evolventa", bold;
+    font-weight: 700;
+    font-style: bold;
+    font-size: 32px !important;
 }
-.service-square-right a {
-    right: 20px;
+.modal-body p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    color: black !important;
+    text-align: left !important;
+    font-size: 20px !important;
+}
+.modal-footer {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between;
+    text-align: center;
+}
+.modal-footer a {
+    text-decoration: none;
+}
+.modal-dialog {
+    max-width: 1000px;
+}
+@media (max-width: 768px) {
+    .block-title {
+        font-size: 32px;
+    }
+    .service-container {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    .service-squares {
+        margin: 0 auto;
+    }
+    .image-container {
+        display: none;
+    }
+    .service-square-left, .service-square-right {
+        width: 335px;
+        height: 130px;
+    }
+    .service-square-left p, .service-square-right p {
+        font-size: 19px;
+    }
+    .service-square-left img, .service-square-right img {
+        width: 80px;
+        height: 80px;
+    }
+    .service-square-left button, .service-square-right button {
+        width: 168px;
+        height: 32px;
+    }
 }
 </style>
 <div class="main-page-container">
-    <div class="first-block"></div>
-    <div class="our-services">
+    <div class="first-block" id=""></div>
+    <div class="our-services" id="service">
         <p class="block-title">НАШИ <span style="color: #667CA3;">УСЛУГИ</span></p>
         <div class="service-container">
             <div class="service-squares left-squares">
@@ -144,16 +237,32 @@
                             <p>{{ service.service_title }}</p>
                             <img src="{{ service.service_img.url }}">
                         </div>
-                        <a href="...">
-                            <button class="service-square-left-button">Подробнее</button>
-                        </a>
+                        <button type="button" class="btn service-square-left-button" data-toggle="modal" data-target="#serviceModal{{ forloop.counter }}">Подробнее</button>
+                        <!-- Модальное окно -->
+                        <div class="modal fade" id="serviceModal{{ forloop.counter }}" tabindex="-1" aria-labelledby="serviceModalLabel{{ forloop.counter }}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <p class="modal-title-text" id="serviceModalLabel">{{ service.service_title }}</p>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>{{ service.text_for_popup|safe }}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="mailto:zakonnoe@list.ru" target="_blank" class="modal-footer-mail"><p>zakonnoe@list.ru</p></a>
+                                        <p>или</p>
+                                        <a href="tel:+79803500789"><p>8 980 350 07 89</p></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 {% endfor %}
             </div>
             <div class="image-container">
                 <img src="/static/img/our-service.svg" class="our-service_img">
                 <div class="solicitor">
-                    <p class="solicitor-name">Вязников Александ Александрович</p>
+                    <p class="solicitor-name">Вязников Александр Александрович</p>
                     <p class="solicitor-experience">Юрист с опытом более 10-ти лет</p>
                 </div>
             </div>
@@ -164,21 +273,36 @@
                             <img src="{{ service.service_img.url }}">
                             <p>{{ service.service_title }}</p>
                         </div>
-                        <a href="...">
-                            <button class="service-square-right-button">Подробнее</button>
-                        </a>
+                        <button type="button" class="btn service-square-right-button" data-toggle="modal" data-target="#serviceModal{{ forloop.counter|add:4 }}">Подробнее</button>
+                        <!-- Модальное окно -->
+                        <div class="modal fade" id="serviceModal{{ forloop.counter|add:4 }}" tabindex="-1" aria-labelledby="serviceModalLabel{{ forloop.counter|add:4 }}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <p class="modal-title-text" id="serviceModalLabel">{{ service.service_title }}</p>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>{{ service.text_for_popup|safe }}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="mailto:zakonnoe@list.ru" target="_blank" class="modal-footer-mail"><p>zakonnoe@list.ru</p></a>
+                                        <p>или</p>
+                                        <a href="tel:+79803500789"><p>8 980 350 07 89</p></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 {% endfor %}
             </div>
         </div>
-    <div class="about"></div>
+    <div class="about" id="about"></div>
     <div class="choice">
         <p class="block-title" style="text-align: left;">ПОЧЕМУ <span style="color: #667CA3;">ВЫБИРАЮТ НАС?</span></p>
         <p class="advantages">Преимущества работы с нами</p>
     </div>
-    <div class="feedback">
+    <div class="feedback" id="feedback">
         <p class="block-title">ЧТО О НАС <span style="color: #667CA3;">ГОВОРЯТ</span></p>
-        
     </div>
 </div>
 {% endblock content %}
