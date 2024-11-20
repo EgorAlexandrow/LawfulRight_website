@@ -1,0 +1,43 @@
+<div class="modal fade" id="donationModal" tabindex="-1" aria-labelledby="donationModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            {% for service in services %}
+                <div class="modal-header">
+                    <h5 class="modal-title" id="donationModalLabel">{{ service.service_title }}:</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>{{ service.text_for_popup }}</p>
+                    <div class="d-flex">
+                        <a href="https://t.me/By_Alexandrow/" target="_blank" class="social-link">
+                            <button type="button" class="btn tg-github-vk">
+                                <img src="/static/img/tg-40.png" alt="Telegram">
+                            </button>
+                        </a>
+                        <a href="https://github.com/ByAlexandrow/" target="_blank" class="social-link">
+                            <button class="btn tg-github-vk">
+                                <img src="/static/img/github-40.png" alt="GitHub">
+                            </button>
+                        </a>
+                        <a href="https://t.me/By_Alexandrow/" target="_blank" class="social-link">
+                            <button type="button" class="btn tg-github-vk">
+                                <img src="/static/img/vk-40.png" alt="VK">
+                           </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <p class="work-together">По вопросам сотрудничества:</p>
+                    <div class="footer-links">
+                        <a href="https://lipetsk.hh.ru/resume/7bc32cb9ff0d4510b90039ed1f427845737944" target="_blank">
+                            <button type="button" class="btn tg-github-vk">Мое резюме на hh.ru</button>
+                        </a>
+                        <a href="https://t.me/AlexandrowE/" target="_blank">
+                            <button class="btn tg">Связаться со мной</button>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

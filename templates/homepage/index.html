@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}Законное право{% endblock title %}
 {% block content %}
+{% include 'includes/popup.html' %}
 <style>
 .block-title {
     font-family: "IBM Plex Serif", serif;
@@ -97,7 +98,7 @@
     height: 105px;
     align-self: flex-start;
 }
-.service-square-left button, .service-square-right button {
+.service-square-left button {
     width: 212px;
     height: 41px;
     background: linear-gradient(to right, #2C7DFF, #667CA3);
@@ -107,6 +108,23 @@
     font-size: 14px;
     border-color: #667CA3;
     position: absolute;
+    bottom: 15px;
+    box-shadow: 
+        0 -4px 10px 0 #667CA3,
+        0 10px 16px 0 grey;
+}
+.service-square-right button {
+    width: 212px;
+    height: 41px;
+    background: linear-gradient(to right, #2C7DFF, #667CA3);
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    color: white;
+    font-size: 14px;
+    border-color: #667CA3;
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
     box-shadow: 
         0 -4px 10px 0 #667CA3,
         0 10px 16px 0 grey;
@@ -119,17 +137,32 @@
     justify-content: space-between;
     align-items: flex-start;
 }
-.service-square-left a, .service-square-right a {
-    position: absolute;
-    bottom: 15px;
-    width: 212px;
-    height: 41px;
-}
-.service-square-left a {
-    left: 20px;
-}
-.service-square-right a {
-    right: 20px;
+@media (max-width: 768px) {
+    .service-container {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    .service-squares {
+        margin: 0 auto;
+    }
+    .image-container {
+        display: none;
+    }
+    .service-square-left, .service-square-right {
+        width: 335px;
+        height: 130px;
+    }
+    .service-square-left p, .service-square-right p {
+        font-size: 19px;
+    }
+    .service-square-left img, .service-square-right img {
+        width: 80px;
+        height: 80px;
+    }
+    .service-square-left button, .service-square-right button {
+        width: 168px;
+        height: 32px;
+    }
 }
 </style>
 <div class="main-page-container">
@@ -144,9 +177,7 @@
                             <p>{{ service.service_title }}</p>
                             <img src="{{ service.service_img.url }}">
                         </div>
-                        <a href="...">
-                            <button class="service-square-left-button">Подробнее</button>
-                        </a>
+                        <button class="service-square-left-button" data-modal-target="#modal-{{ service.id }}">Подробнее</button>
                     </div>
                 {% endfor %}
             </div>
@@ -164,13 +195,12 @@
                             <img src="{{ service.service_img.url }}">
                             <p>{{ service.service_title }}</p>
                         </div>
-                        <a href="...">
-                            <button class="service-square-right-button">Подробнее</button>
-                        </a>
+                        <button class="service-square-right-button" data-modal-target="#modalPopup">Подробнее</button>
                     </div>
                 {% endfor %}
             </div>
         </div>
+    </div>
     <div class="about"></div>
     <div class="choice">
         <p class="block-title" style="text-align: left;">ПОЧЕМУ <span style="color: #667CA3;">ВЫБИРАЮТ НАС?</span></p>
@@ -181,4 +211,31 @@
         
     </div>
 </div>
+<!-- <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const modalButtons = document.querySelectorAll('[data-modal-target]');
+    const modals = document.querySelectorAll('.modal');
+
+    modalButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const modalId = this.getAttribute('data-modal-target');
+            const modal = document.querySelector(modalId);
+            modal.style.display = 'block';
+        });
+    });
+
+    modals.forEach(modal => {
+        const closeButton = modal.querySelector('.close');
+        closeButton.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        });
+    });
+});
+</script> -->
 {% endblock content %}
