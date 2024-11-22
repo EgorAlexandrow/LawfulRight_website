@@ -26,3 +26,23 @@ class Services(models.Model):
 
     def __str__(self):
         return f'{self.service_title}'
+
+
+class Cookies(models.Model):
+    cookies_title = models.CharField(
+        max_length=100,
+        verbose_name='Название',
+    )
+    cookies_text = HTMLField(
+        verbose_name='Текст cookies'
+    )
+    is_published = models.BooleanField(
+        verbose_name='Опубликовать'
+    )
+
+    class Meta:
+        verbose_name = 'Cookies'
+        verbose_name_plural = 'Cookies'
+    
+    def __str__(self):
+        return f'{self.cookies_title}'

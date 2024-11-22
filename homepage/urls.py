@@ -6,5 +6,6 @@ from . import views
 app_name = 'homepage'
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('cookies/', views.cookies, name='cookies'),
+    path('', views.index, name='index')
 ]

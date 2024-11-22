@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Законное право - Политика конфиденциальности{% endblock title %}
+{% block content %}
+<style>
+.container-cookie {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.cookie-text h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+}
+.cookie-text p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+.cookie-text p strong {
+    color: #333;
+}
+.cookie-text p a {
+    color: #007bff;
+    text-decoration: none;
+}
+.cookie-text p a:hover {
+    text-decoration: underline;
+}
+</style>
+<div class="container-cookie">
+    {% for cookie in cookies_files %}
+        <div class="cookie-text">
+            <h2>{{ cookie.cookies_title }}</h2>
+            <p>{{ cookie.cookies_text|safe }}</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
