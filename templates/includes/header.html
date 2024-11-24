@@ -41,7 +41,7 @@
     font-style: bold;
     font-size: 14px;
 }
-.nav-link {
+.nav-link, .order {
     color: black;
     font-family: "Evolventa", bold;
     font-weight: 500;
@@ -69,6 +69,9 @@
     color: black;
     font-size: 14px;
     line-height: 1;
+}
+.order {
+    border: none;
 }
 @media (max-width: 768px) {
     .navbar-brand-header {
@@ -160,9 +163,7 @@
                         </a>
                     </li>
                     <li class="header-nav-item">
-                        <a class="nav-link" href="...">
-                            Заявка
-                        </a>
+                        <button type="button" class="btn order" data-bs-toggle="modal" data-bs-target="#orderModal">Заявка</button>
                     </li>
                 </ul>
             </div>
@@ -200,9 +201,7 @@
                         </a>
                     </li>
                     <li class="header-nav-item">
-                        <a class="nav-link" href="...">
-                            Заявка
-                        </a>
+                        <button type="button" class="btn order" data-bs-toggle="modal" data-bs-target="#orderModal">Заявка</button>
                     </li>
                 </ul>
             </div>

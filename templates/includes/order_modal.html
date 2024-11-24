@@ -1,0 +1,92 @@
+<style>
+.modal-content {
+    border: 2px solid #667CA3;
+    text-align: center;
+    color: black;
+    font-family: "Evolventa", bold;
+    font-weight: 500;
+    font-style: bold;
+}
+.modal-header {
+    border-bottom: 1px solid #667CA3;
+    font-family: "Evolventa", bold;
+    font-weight: 700;
+    font-style: bold;
+    font-size: 60px;
+}
+.modal-body .d-flex {
+    display: flex;
+    justify-content: center;
+}
+.modal-footer {
+    border-top: 1px solid #667CA3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.modal-footer p {
+    margin-bottom: 10px;
+}
+.footer-links {
+    display: flex;
+    gap: 10px;
+}
+.footer-links .btn {
+    flex: 1;
+}
+.email-phone-link-modal {
+    font-family: "Evolventa", bold;
+    font-weight: 600;
+    font-style: bold;
+    font-size: 30px;
+    text-decoration: none;
+}
+.btn-close {
+    color: #4C956C;
+    background-size: contain;
+    width: 10px;
+    height: 10px;
+    border: none;
+    transition: transform 0.2s ease-in-out;
+}
+.btn-close:hover {
+    transform: scale(1.1);
+}
+.modal-dialog {
+    max-width: 500px;
+}
+@media (max-width: 768px) {
+    .modal-footer {
+        flex-direction: column;
+        align-items: center;
+    }
+    .footer-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    .footer-links .btn {
+        width: 100%;
+    }
+    .modal-image {
+        max-width: 100%;
+        height: auto;
+    }
+}
+</style>
+<div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="orderModalLabel">Заполните заявку:</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+                <p class="work-together">Или позвоните:</p>
+                <div class="footer-links">
+                    <a href="tel:+79803500789" class="header-contact-phone" style="text-decoration: none; color: #667CA3;">8 980 350 07 89</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

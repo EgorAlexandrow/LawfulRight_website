@@ -28,6 +28,30 @@ class Services(models.Model):
         return f'{self.service_title}'
 
 
+# class Order(models.Model):
+#     name = models.CharField(
+#         max_length=50,
+#         verbose_name='Ваше имя',
+#     )
+#     phone = models.CharField(
+#         max_length=11,
+#         verbose_name='Номер телефона',
+#     )
+#     problem = HTMLField(
+#         verbose_name='Описание проблемы'
+#     )
+#     confidetial = models.BooleanField(
+#         verbose_name='Согласие с политикой конфиденциальность'
+#     )
+
+#     class Meta:
+#         verbose_name = 'Заявка'
+#         verbose_name_plural = 'Заявка'
+    
+#     def __str__(self):
+#         return f'{self.name}'
+
+
 class Cookies(models.Model):
     cookies_title = models.CharField(
         max_length=100,
