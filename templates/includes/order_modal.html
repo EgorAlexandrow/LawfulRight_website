@@ -55,6 +55,30 @@
 .modal-dialog {
     max-width: 500px;
 }
+.form-label {
+    padding-right: 10px;
+}
+.send-form-btn {
+    border-color: #667CA3;
+    background: linear-gradient(to right, #2C7DFF, #667CA3);
+    width: 212px;
+    height: 41px;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    color: white;
+    font-family: "Evolventa", bold;
+    font-weight: 500;
+    font-style: bold;
+    font-size: 14px;
+    transition: transform 0.3s ease;
+}
+.send-form-btn:hover {
+    color: white;
+    transform: scale(1.1);
+}
+.order-modal-dialog {
+    max-width: 700px;
+}
 @media (max-width: 768px) {
     .modal-footer {
         flex-direction: column;
@@ -71,16 +95,74 @@
         max-width: 100%;
         height: auto;
     }
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+    .form-group label {
+        margin-bottom: 0.5rem;
+    }
+    .col-md-4 {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    .form-check {
+        display: flex;
+        align-items: center;
+    }
+    .form-check-label {
+        margin-left: 0.5rem;
+    }
 }
 </style>
 <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog order-modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="orderModalLabel">Заполните заявку:</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body"></div>
+            <div class="modal-body">
+                <form method="post" action="...">
+                    {% csrf_token %}
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="{{ form.name.id_for_label }}" class="form-label">{{ form.name.label }}</label>
+                                {{ form.name }}
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="{{ form.phone.id_for_label }}" class="form-label">{{ form.phone.label }}</label>
+                                {{ form.phone }}
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="{{ form.email.id_for_label }}" class="form-label">{{ form.email.label }}</label>
+                                {{ form.email }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 text-center">
+                        <label for="{{ form.problem.id_for_label }}" class="form-label">{{ form.problem.label }}</label>
+                        <p class="col md-12">
+                            <textarea id="{{ form.problem.id_for_label }}" name="{{ form.problem.name }}" rows="5" cols="40" class="form-control" style="border-color: #667CA3;">{{ form.problem.value|default_if_none:"" }}</textarea>
+                        </p>
+                    </div>
+                    <div class="mb-3 form-check">
+                        {{ form.confidential }}
+                        <label for="{{ form.confidential.id_for_label }}" class="form-check-label">
+                            Согласитесь с <a href="..." target="_blank">{{ form.confidential.label }}</a>
+                        </label>
+                    </div>
+                    <div class="mb-3">
+                        <label>После отправки заявки мы свяжемся с вами в течение нескольких дней</label>
+                    </div>
+                    <button type="submit" class="btn send-form-btn">Отправить</button>
+                </form>
+            </div>
             <div class="modal-footer">
                 <p class="work-together">Или позвоните:</p>
                 <div class="footer-links">

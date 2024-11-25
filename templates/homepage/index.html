@@ -191,7 +191,7 @@
 .modal-footer a {
     text-decoration: none;
 }
-.modal-dialog {
+.service-dialog {
     max-width: 1000px;
 }
 @media (max-width: 768px) {
@@ -240,7 +240,7 @@
                         <button type="button" class="btn service-square-left-button" data-toggle="modal" data-target="#serviceModal{{ forloop.counter }}">Подробнее</button>
                         <!-- Модальное окно -->
                         <div class="modal fade" id="serviceModal{{ forloop.counter }}" tabindex="-1" aria-labelledby="serviceModalLabel{{ forloop.counter }}" aria-hidden="true">
-                            <div class="modal-dialog">
+                            <div class="modal-dialog service-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <p class="modal-title-text" id="serviceModalLabel">{{ service.service_title }}</p>
@@ -276,7 +276,7 @@
                         <button type="button" class="btn service-square-right-button" data-toggle="modal" data-target="#serviceModal{{ forloop.counter|add:4 }}">Подробнее</button>
                         <!-- Модальное окно -->
                         <div class="modal fade" id="serviceModal{{ forloop.counter|add:4 }}" tabindex="-1" aria-labelledby="serviceModalLabel{{ forloop.counter|add:4 }}" aria-hidden="true">
-                            <div class="modal-dialog">
+                            <div class="modal-dialog service-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <p class="modal-title-text" id="serviceModalLabel">{{ service.service_title }}</p>
