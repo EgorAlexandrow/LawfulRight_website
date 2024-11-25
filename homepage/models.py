@@ -31,19 +31,29 @@ class Services(models.Model):
 class Order(models.Model):
     name = models.CharField(
         max_length=50,
+        blank=False,
+        null=False,
         verbose_name='Ваше имя',
     )
     phone = models.CharField(
         max_length=11,
+        blank=False,
+        null=False,
         verbose_name='Номер телефона',
     )
     email = models.EmailField(
+        blank=False,
+        null=False,
         verbose_name='Email'
     )
     problem = models.TextField(
+        blank=False,
+        null=False,
         verbose_name='Описание проблемы'
     )
     confidential = models.BooleanField(
+        blank=False,
+        null=False,
         verbose_name='Согласие с политикой конфиденциальность'
     )
 

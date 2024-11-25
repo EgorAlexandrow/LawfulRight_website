@@ -80,6 +80,19 @@
     text-align: left;
     margin-top: 10px;
 }
+.official-data {
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-family: "Evolventa", bold;
+    font-weight: 500;
+    font-style: bold;
+    font-size: 15px;
+    padding: 10px 0;
+}
+.official-data p {
+    margin: 0 10px;
+}
 @media (max-width: 768px) {
     .footer {
         background-color: white;
@@ -133,6 +146,14 @@
     .email-phone-link {
         color: #667CA3;
         font-size: 30px;
+    }
+    .official-data {
+        color: #667CA3;
+        flex-direction: column;
+        align-items: center;
+    }
+    .official-data p {
+        margin: 5px 0;
     }
     .location-icon {
         content: url('/static/img/blue-location.svg')
@@ -200,11 +221,9 @@
             <script src="https://api-maps.yandex.ru/2.1/?apikey=2f6d7296-d495-4c02-890c-66b2b85cea4e&lang=ru_RU" type="text/javascript"></script>
             <script type="text/javascript">
                 ymaps.ready(init);
-
                 function init() {
                     // Адрес, который нужно геокодировать
                     var address = "г. Липецк, пр. Победы, д.29, оф. 530, БЦ 'Виктория'";
-
                     // Геокодирование адреса
                     ymaps.geocode(address, {
                         results: 1
@@ -212,19 +231,16 @@
                         // Получаем первый результат геокодирования
                         var firstGeoObject = res.geoObjects.get(0);
                         var coords = firstGeoObject.geometry.getCoordinates();
-
                         // Создание карты
                         var myMap = new ymaps.Map("map", {
                             center: coords,
                             zoom: 16
                         });
-
                         // Добавление метки на карту
                         var myPlacemark = new ymaps.Placemark(coords, {
                             hintContent: 'БЦ "Виктория"',
                             balloonContent: 'г. Липецк, пр. Победы, д.29, оф. 530'
                         });
-
                         myMap.geoObjects.add(myPlacemark);
                     }).catch(function (error) {
                         console.error("Ошибка геокодирования: ", error);
@@ -253,4 +269,8 @@
             </div>
         </div>
     </nav>
+    <div class="official-data">
+        <p>ИНН: 482417981070</p>
+        <p>ОГРНИП: 320482700025368</p>
+    </div>
 </footer>

@@ -134,3 +134,11 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.mail.ru'  # SMTP сервер Mail.ru
+EMAIL_PORT = 465  # Порт SMTP сервера Mail.ru для SSL
+EMAIL_USE_SSL = True  # Использовать SSL для Mail.ru
+EMAIL_HOST_USER = 'egor.alekss@mail.ru'  # Ваш почтовый ящик
+EMAIL_HOST_PASSWORD = '3zHqgHQ05ybkUg5UARKg'  # Пароль приложения
+DEFAULT_FROM_EMAIL = 'egor.alekss@mail.ru'  # Ваш почтовый ящик
