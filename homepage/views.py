@@ -2,15 +2,14 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.conf import settings
 
-from homepage.models import Services, Cookies
+from homepage.models import Services
 from homepage.forms import OrderForm
 
 
 def index(request):
-    cookie = Cookies.objects.filter(is_published=True)
     services = Services.objects.filter(is_published=True)
     form = OrderForm()
-    return render(request, 'homepage/index.html', {'cookie': cookie, 'services': services, 'form': form})
+    return render(request, 'homepage/index.html', {'services': services, 'form': form})
 
 
 def send_order_form(request):
