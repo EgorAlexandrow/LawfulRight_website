@@ -194,9 +194,55 @@
 .service-dialog {
     max-width: 1000px;
 }
+.cards-and-image {
+    display: flex;
+    gap: 20px;
+    margin-left: 75px;
+    margin-top: 70px;
+    margin-bottom: 75px;
+    position: relative;
+}
+.advantages-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.advantage-row {
+    display: flex;
+    gap: 20px;
+}
+.one-advantage-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    width: 369px;
+    height: 217px;
+    background: rgba(133, 216, 255, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+}
+.one-advantage-card p {
+    color: #667CA3;
+    font-family: "IBM Plex Serif", serif;
+    font-weight: 500;
+    font-style: bold;
+    font-size: 30px;
+}
+.scale {
+    position: absolute;
+    right: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+}
 @media (max-width: 768px) {
     .block-title {
         font-size: 32px;
+    }
+    .advantages {
+        font-size: 16px; 
     }
     .service-container {
         grid-template-columns: 1fr;
@@ -223,10 +269,40 @@
         width: 168px;
         height: 32px;
     }
+    .cards-and-image {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 0;
+        margin-top: 20px;
+        margin-bottom: 0px;
+        position: static;
+    }
+    .advantages-cards {
+        width: 100%;
+    }
+    .advantage-row {
+        flex-direction: column;
+        align-items: center;
+    }
+    .one-advantage-card {
+        width: 335px;
+        height: 200px;
+    }
+    .one-advantage-card p {
+        font-size: 26px;
+    }
+    .scale {
+        position: relative;
+        margin-left: 100px;
+        top: 50%;
+        transform: translateY(-20%);
+        width: 285px;
+        height: 344px;
+    }
 }
 </style>
 <div class="main-page-container">
-    <div class="first-block" id=""></div>
+    <div class="first-block"></div>
     <div class="our-services" id="service">
         <p class="block-title">НАШИ <span style="color: #667CA3;">УСЛУГИ</span></p>
         <div class="service-container">
@@ -301,6 +377,28 @@
     <div class="choice">
         <p class="block-title" style="text-align: left;">ПОЧЕМУ <span style="color: #667CA3;">ВЫБИРАЮТ НАС?</span></p>
         <p class="advantages">Преимущества работы с нами</p>
+        <div class="cards-and-image">
+            <div class="advantages-cards">
+                <div class="advantage-row">
+                    <div class="one-advantage-card">
+                        <img src="/static/img/work_expirience.svg">
+                        <p>лет опыта работы</p>
+                    </div>
+                    <div class="one-advantage-card">
+                        <p>Индивидуальный подход</p>
+                    </div>
+                </div>
+                <div class="advantage-row">
+                    <div class="one-advantage-card">
+                        <p>Доступные цены</p>
+                    </div>
+                    <div class="one-advantage-card">
+                        <p>Гарантия конфиденциальности</p>
+                    </div>
+                </div>
+            </div>
+            <img src="/static/img/scale.svg" class="scale">
+        </div>
     </div>
     <div class="feedback" id="feedback">
         <p class="block-title">ЧТО О НАС <span style="color: #667CA3;">ГОВОРЯТ</span></p>
