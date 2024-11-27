@@ -184,34 +184,109 @@
     line-height: 0.1; 
 }
 .about {
+    height: 870px;
     background-color: #667CA3;
     display: grid;
     grid-template-columns: 1fr auto 1fr;
-    align-items: center;
+    align-items: end;
     justify-content: center;
+    margin-bottom: 50px;
+    position: relative;
+}
+.about-logo {
+    font-family: "IBM Plex Serif", serif;
+    font-weight: 500;
+    font-style: medium;
+    font-size: 22px;
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-160%);
+    z-index: 3;
+}
+.about-left-img, .about-right-img {
+    width: 404px;
+    height: 835px;
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
 }
 .about-left-img {
-    justify-self: start;
-    width: 504px;
-    height: 855px;
+    left: 0;
 }
 .about-right-img {
-    justify-self: end;
-    width: 504px;
-    height: 855px;
+    right: 0;
+}
+.about-card {
+    width: 1250px;
+    height: 730px;
+    background: rgba(253, 253, 253, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 .about-text-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
     color: white;
     font-family: "Evolventa", normal;
     font-weight: 400;
     font-style: normal;
     font-size: 18px;
+    text-align: center;
+    max-width: 80%;
 }
-.about-first-paragraph, .about-second-paragraph {
+.about-first-paragraph {
+    width: 861px;
+    height: 168px;
     text-align: left;
+    margin: 45px 0;
+}
+.about-second-paragraph-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+.about-second-paragraph {
+    width: 539px;
+    height: 216px;
+    text-align: left;
+}
+.about-more-info {
+    margin-top: 50px;
+    color: white;
+    font-family: "Evolventa", oblique;
+    font-weight: 400;
+    font-style: oblique;
+    font-size: 16px;
+    text-align: center;
+}
+.about-social {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+.about-social-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 41px;
+    height: 72px;
+    background-image: url('/static/img/white-background-for-socials.svg');
 }
 .feedback {
     margin-bottom: 40px;
@@ -544,8 +619,57 @@
         width: 285px;
         height: 344px;
     }
+    .about {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        grid-template-columns: 1fr;
+        background-color: transparent;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url('/static/img/mobile-background.svg');
+        margin-bottom: 30px;
+    }
+    .about-logo {
+        position: static; /* Убираем абсолютное позиционирование */
+        transform: none; /* Убираем трансформацию */
+        text-align: center; /* Центрируем текст */
+        margin-bottom: 10px; /* Отступ снизу */
+        margin-top: 100px;
+    }
     .about-left-img, .about-right-img {
         display: none;
+    }
+    .about-card {
+        width: 90%; /* Ширина карточки на маленьких экранах */
+        max-width: 1250px;
+        height: auto; /* Автоматическая высота для адаптации */
+        position: static; /* Убираем абсолютное позиционирование */
+        transform: none; /* Убираем трансформацию */
+        margin-top: 10px; /* Отступ сверху */
+        margin-bottom: 100px;
+    }
+    .about-text-container {
+        font-size: 13px; /* Уменьшаем размер шрифта на маленьких экранах */
+    }
+    .about-first-paragraph, .about-second-paragraph {
+        width: 100%;
+        text-align: center; /* Центрируем текст */
+        margin: 20px 0;
+    }
+    .about-second-paragraph {
+        margin-bottom: 70px;
+        margin-top: 210px;
+    }
+    .about-more-info {
+        font-size: 10px;
+        margin-top: 40px; /* Уменьшаем отступ сверху */
+    }
+    .about-social {
+        margin-bottom: 10px;
     }
 }
 </style>
@@ -653,26 +777,50 @@
     </div>
     <div class="about" id="about">
         <img src="/static/img/about-left-img.svg" class="about-left-img">
-        <div class="about-text-container">
-            <p class="about-first-paragraph">
-                Юридическое агентство «Законное право» - это прежде всего команда профессиональных юристов,
-                обладающих  колоссальным опытом  участия в судебных спорах и безупречной репутацией.
-                Мы оказываем качественные юридические услуги гражданам и организациям.
-                При этом мы всегда честно рассказываем о перспективах дела и не заманиваем клиентов пустыми обещаниями.
-                Если мы беремся за ваше дело, то вы всегда будете в курсе происходящего,
-                поскольку мы с уважением относимся к каждому клиенту и разделяем его переживания.
-                Мы не боимся сложных дел и готовы разобраться в самой непростой ситуации.
-            </p>
-            <p class="about-second-paragraph">
-                Мы не боимся сложных дел и готовы разобраться в самой непростой ситуации. Наши услуги не безвозмездны.
-                Но со своей стороны мы гарантируем применение всех наших знаний и опыта в разрешении вашей ситуации.
-                Наша цель – не только заработать деньги, но и добиться максимально выгодного для клиента результата,
-                сохранив свою репутацию на высоком уровне.<br>
-                <br>
-                Управляющий партнер Александр Шкурко.
-            </p>
-        </div>
         <img src="/static/img/about-right-img.svg" class="about-right-img">
+        <p class="about-logo">
+            <img src="/static/img/white-logo.svg"> ЗАКОННОЕ ПРАВО
+        </p>
+        <div class="about-card">
+            <div class="about-text-container">
+                <p class="about-first-paragraph">
+                    Юридическое агентство «Законное право» - это прежде всего команда профессиональных юристов,
+                    обладающих  колоссальным опытом  участия в судебных спорах и безупречной репутацией.
+                    Мы оказываем качественные юридические услуги гражданам и организациям.
+                    При этом мы всегда честно рассказываем о перспективах дела и не заманиваем клиентов пустыми обещаниями.
+                    Если мы беремся за ваше дело, то вы всегда будете в курсе происходящего,
+                    поскольку мы с уважением относимся к каждому клиенту и разделяем его переживания.
+                    Мы не боимся сложных дел и готовы разобраться в самой непростой ситуации.
+                </p>
+                <div class="about-second-paragraph-container">
+                    <p class="about-second-paragraph">
+                        Мы не боимся сложных дел и готовы разобраться в самой непростой ситуации. Наши услуги не безвозмездны.
+                        Но со своей стороны мы гарантируем применение всех наших знаний и опыта в разрешении вашей ситуации.
+                        Наша цель – не только заработать деньги, но и добиться максимально выгодного для клиента результата,
+                        сохранив свою репутацию на высоком уровне.<br>
+                        <br>
+                        Управляющий партнер Александр Шкурко.
+                    </p>
+                </div>
+                <p class="about-more-info">
+                    Так же вы можете узнать подробнее здесь
+                    <div class="about-social">
+                        <a href="https://vk.com/zakpravo" target="_blank" class="about-social-link">
+                            <img src="/static/img/blue-vk.svg" alt="VK" class="social-icon" style="width: 26px; height: 16px;">
+                        </a>
+                        <a href="https://t.me/zakpravo" target="_blank" class="about-social-link">
+                            <img src="/static/img/blue-tg.svg" alt="Telegram" class="social-icon" style="width: 26px; height: 20px;">
+                        </a>
+                        <a href="https://dzen.ru/id/5f2d19a7140573681b9d917a" target="_blank" class="about-social-link">
+                            <img src="/static/img/blue-dzen.svg" alt="Dzen" class="social-icon" style="width: 26px; height: 26px;">
+                        </a>
+                        <a href="https://www.youtube.com/channel/UC7994RrL-e_6wLRiYmfY1hA" target="_blank" class="about-social-link">
+                            <img src="/static/img/blue-youtube.svg" alt="YouTube" class="social-icon" style="width: 26px; height: 26px;">
+                        </a>
+                    </div>
+                </p>
+            </div>
+        </div>
     </div>
     <div class="choice">
         <div class="advantages-text">
