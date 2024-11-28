@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Политика конфиденциальности{% endblock title %}
+{% block content %}
+<style>
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+    margin: 0;
+}
+.paper-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    padding: 50px;
+}
+.privacy_policy {
+    width: 210mm;
+    height: 297mm;
+    padding: 20mm;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+</style>
+<div class="paper-container">
+    <div class="privacy_policy">
+        {% for privacy in privacy %}
+            <p>{{ privacy.privacy_text|safe }}</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

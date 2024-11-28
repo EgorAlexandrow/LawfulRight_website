@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.conf import settings
 
-from homepage.models import Services
+from homepage.models import Services, Privacy
 from homepage.forms import OrderForm
 
 
@@ -10,6 +10,11 @@ def index(request):
     services = Services.objects.filter(is_published=True)
     form = OrderForm()
     return render(request, 'homepage/index.html', {'services': services, 'form': form})
+
+
+def privacy_policy(request):
+    privacy = Privacy.objects.filter(is_published=True)
+    return render(request, 'includes/privacy_policy.html', {'privacy': privacy})
 
 
 def send_order_form(request):

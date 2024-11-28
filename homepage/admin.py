@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from homepage.models import Services,Order, Cookies
+from homepage.models import Services, Order, Privacy
 
 @admin.register(Services)
 class ServicesAdmin(admin.ModelAdmin):
@@ -13,6 +13,6 @@ class OrderAdmin(admin.ModelAdmin):
     list_display = ('name', 'phone', 'email')
 
 
-@admin.register(Cookies)
-class CookiesAdmin(admin.ModelAdmin):
-    list_display = ('cookies_title', 'is_published')
+@admin.register(Privacy)
+class PrivacyAdmin(admin.ModelAdmin):
+    list_display = ('privacy_title', 'is_published')

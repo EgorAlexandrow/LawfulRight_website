@@ -7,5 +7,6 @@ app_name = 'homepage'
 
 urlpatterns = [
     path('send_order_form/', views.send_order_form, name='send_order_form'),
+    path('policy/', views.privacy_policy, name='privacy_policy'),
     path('', views.index, name='index')
 ]

@@ -65,21 +65,21 @@ class Order(models.Model):
         return f'{self.name}'
 
 
-class Cookies(models.Model):
-    cookies_title = models.CharField(
+class Privacy(models.Model):
+    privacy_title = models.CharField(
         max_length=100,
         verbose_name='Название',
     )
-    cookies_text = HTMLField(
-        verbose_name='Текст cookies'
+    privacy_text = HTMLField(
+        verbose_name='Текст политики конфиденциальности'
     )
     is_published = models.BooleanField(
         verbose_name='Опубликовать'
     )
 
     class Meta:
-        verbose_name = 'Cookies'
-        verbose_name_plural = 'Cookies'
+        verbose_name = 'Политика конфиденциальности'
+        verbose_name_plural = 'Политика конфиденциальности'
     
     def __str__(self):
-        return f'{self.cookies_title}'
+        return f'{self.privacy_title}'
