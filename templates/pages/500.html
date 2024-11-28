@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Ошибка сервера{% endblock %}
+{% block content %}
+<style>
+.container-error-500 {
+    text-align: center;
+    padding: 50px 0; /* Добавляем отступы сверху и снизу */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.error-500-title {
+    color: #667CA3;;
+    font-family: "IBM Plex Serif", serif;
+    font-weight: 500;
+    font-style: bold;
+    text-align: center;
+    font-size: 40px;
+}
+.error-number {
+    font-size: 50px;
+    color: #667CA3;
+}
+.error-500-description {
+    color: #667CA3;
+    font-size: 25px;
+    font-family: "Evolventa", bold;
+    font-weight: 500;
+    font-style: bold;
+    text-align: center;
+}
+.back-link {
+    text-decoration: none;
+}
+.back-word {
+    color: #667CA3;
+    font-size: 24px;
+    font-family: "Evolventa", bold;
+    font-weight: 500;
+    font-style: bold;
+    text-align: center;
+}
+</style>
+<div class="container-error-500">
+    <p class="error-500-title">Ошибка сервера</p>
+    <p class="error-500-description">На сервере что-то прошло не так!</p>
+    <h2 class="error-number">500</h2>
+    <p class="error-500-description">Разбираемся и исправляем</p>
+    <a class="back-link" href="javascript:history.back()">
+        <p class="back-word">>>Назад<<</p>
+    </a>
+</div>
+{% endblock %}
