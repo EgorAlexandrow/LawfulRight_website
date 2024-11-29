@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.conf import settings
@@ -7,6 +8,9 @@ from homepage.forms import OrderForm
 
 
 def index(request):
+    if not request.COOKIES.get('open_site'):
+        response = HttpResponse("Открытие сайта!")
+        response.set_cookie('open_site', 'true', max_age=3600)
     services = Services.objects.filter(is_published=True)
     form = OrderForm()
     return render(request, 'homepage/index.html', {'services': services, 'form': form})
