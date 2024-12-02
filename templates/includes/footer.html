@@ -231,24 +231,20 @@
             <script type="text/javascript">
                 ymaps.ready(init);
                 function init() {
-                    // Адрес, который нужно геокодировать
-                    var address = "г. Липецк, пр. Победы, д.29, оф. 530, БЦ 'Виктория'";
-                    // Геокодирование адреса
+                    var address = "просп. Победы, 29, корп. 1, офис 530, этаж 5, г. Липецк";
                     ymaps.geocode(address, {
                         results: 1
                     }).then(function (res) {
-                        // Получаем первый результат геокодирования
                         var firstGeoObject = res.geoObjects.get(0);
                         var coords = firstGeoObject.geometry.getCoordinates();
-                        // Создание карты
                         var myMap = new ymaps.Map("map", {
                             center: coords,
                             zoom: 16
                         });
-                        // Добавление метки на карту
                         var myPlacemark = new ymaps.Placemark(coords, {
-                            hintContent: 'БЦ "Виктория"',
-                            balloonContent: 'г. Липецк, пр. Победы, д.29, оф. 530'
+                            hintContent: 'Законное право',
+                            balloonContent: 'просп. Победы, 29, корп. 1, офис 530, этаж 5, г. Липецк',
+                            iconCaption: 'Законное право'
                         });
                         myMap.geoObjects.add(myPlacemark);
                     }).catch(function (error) {
