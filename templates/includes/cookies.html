@@ -1,65 +1,106 @@
 <style>
-#cookie-modal {
-  display: none;
-  position: fixed;
-  z-index: 99999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  justify-content: center;
-  align-items: center;
+.cookie-consent {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 10px 50px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-top: 1px solid #ddd;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-.modal-content {
-  background-color: white;
-  margin: auto;
-  padding: 16px;
-  border: 1px solid #888;
-  width: 80%;
-  box-shadow: 0 5px 15px #000;
-  text-align: center;
+.cookie-consent p {
+    margin: 0;
+    font-size: 16px;
+    color: #666;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+    flex-grow: 1;
+    padding-right: 10px;
 }
-.modal-content button {
-  font-size: 14px;
-  padding: 8px 16px;
-  border-radius: 4px;
-  background-color: #2196F3;
-  border: none;
-  color: white;
-  margin-left: 20px;
+.cookie-consent button {
+    border-color: #667CA3;
+    background: linear-gradient(to right, #2C7DFF, #667CA3);
+    width: 300px;
+    height: 40px;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    color: white;
+    font-family: "Evolventa", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    transition: transform 0.3s ease;
+    white-space: nowrap;
 }
-.modal-content button:hover {
-  background-color: #bada55;
+.cookie-consent button:hover {
+    opacity: 0.8;
 }
-#cookie-modal.show {
-  display: flex;
+@media (max-width: 768px) {
+    .cookie-consent {
+        flex-direction: column; /* Изменяем направление flex-контейнера на вертикальное */
+        align-items: center; /* Выравниваем элементы по центру */
+        padding: 10px 20px; /* Уменьшаем отступы слева и справа */
+    }
+    .cookie-consent p {
+        text-align: center; /* Выравниваем текст по центру */
+        padding-right: 0; /* Убираем отступ справа */
+        padding-bottom: 20px; /* Добавляем отступ снизу */
+    }
+    .cookie-consent button {
+        width: 100%; /* Делаем кнопку на всю ширину */
+    }
 }
 </style>
-<div id="cookie-modal">
-    <div class="modal-content">
-      <h3>Политика использования куки</h3>
-      <p>Наш сайт использует куки для улучшения вашего опыта. Вы можете согласиться с этим или отказаться.</p>
-      <button id="accept-cookie" type="submit" class="btn btn-primary">Принять</button>
-      <button id="decline-cookie" type="submit" class="btn btn-danger">Отказаться</button>
-    </div>
+<div id="cookie-consent" class="cookie-consent">
+    <p>
+        Мы используем cookies для улучшения работы сайта, анализа трафика и персонализации.
+        Используя сайт или кликая на Я согласен, вы соглашаетесь с нашей политикой использования персональных данных и cookies
+        в соответствии с Политикой о персональных данных.
+        Вы можете прочитать нашу политику <a href="{% url 'homepage:privacy_policy' %}" target="_blank">здесь</a>
+    </p>
+    <button id="accept-cookies" class="accept">Я согласен</button>
 </div>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const cookieConsent = localStorage.getItem('cookie_consent');
-
-  if (!cookieConsent) {
-    document.querySelector('#cookie-modal').classList.add('show');
-  }
-
-  document.querySelector('#accept-cookie').addEventListener('click', function() {
-    localStorage.setItem('cookie_consent', 'accepted');
-    document.querySelector('#cookie-modal').classList.remove('show');
-  });
-
-  document.querySelector('#decline-cookie').addEventListener('click', function() {
-    localStorage.setItem('cookie_consent', 'declined');
-    document.querySelector('#cookie-modal').classList.remove('show');
-  });
-});
+    document.addEventListener('DOMContentLoaded', function() {
+        const cookieConsent = document.getElementById('cookie-consent');
+        const acceptBtn = document.getElementById('accept-cookies');
+        // Проверяем, есть ли уже куки
+        if (!getCookie('userAcceptedCookies')) {
+            // Показываем окно согласия
+            cookieConsent.style.display = 'flex';
+        }
+        // Обработчик нажатия на кнопку "Принять"
+        acceptBtn.addEventListener('click', function() {
+            setCookie('userAcceptedCookies', 'true', 365);
+            cookieConsent.style.display = 'none';
+        });
+        // Функция для установки куки
+        function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+        // Функция для получения куки
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+    });
 </script>
