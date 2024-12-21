@@ -6,7 +6,7 @@
 
 1. Python
 2. Django, MySQL
-3. SMTP
+3. SMTP, Cookies
 4. JavaScript, HTML5, CSS3 + адаптация для мобильный устройств
 5. TinyMCE
 6. Pytest + обработчик 500, 404, 403
