@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Страница не найдена{% endblock %}
+{% block content %}
+<style>
+.container-error-403 {
+    text-align: center;
+    padding: 50px 0; /* Добавляем отступы сверху и снизу */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.error-403-title {
+    color: #667CA3;;
+    font-family: "IBM Plex Serif", serif;
+    font-weight: 500;
+    font-style: bold;
+    text-align: center;
+    font-size: 40px;
+}
+.error-number {
+    font-size: 50px;
+    color: #667CA3;
+}
+.error-403-description {
+    color: #667CA3;
+    font-size: 25px;
+    font-family: "Evolventa", bold;
+    font-weight: 500;
+    font-style: bold;
+    text-align: center;
+}
+.back-link {
+    text-decoration: none;
+}
+.back-word {
+    color: #667CA3;
+    font-size: 24px;
+    font-family: "Evolventa", bold;
+    font-weight: 500;
+    font-style: bold;
+    text-align: center;
+}
+</style>
+<div class="container-error-403">
+    <p class="error-403-title">Страница не найдена</p>
+    <p class="error-403-description">Отказано в праве доступа!</p>
+    <h2 class="error-number">403</h2>
+    <p class="error-403-description">Вам сюда нельзя</p>
+    <a class="back-link" href="javascript:history.back()">
+        <p class="back-word">>>Назад<<</p>
+    </a>
+</div>
+{% endblock %}
