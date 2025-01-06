@@ -157,6 +157,7 @@
                             Согласитесь с <a href="{% url 'homepage:privacy_policy' %}" target="_blank">{{ form.confidential.label }}*</a>
                         </label>
                     </div>
+                    <input type="hidden" name="timestamp" id="timestamp" value="">
                     <div class="mb-3">
                         <label>После отправки заявки мы свяжемся с вами в течение нескольких дней</label>
                     </div>
@@ -172,3 +173,24 @@
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Заполняем скрытое поле timestamp текущим временем
+        var timestampField = document.querySelector("[name='timestamp']");
+        if (timestampField) {
+            timestampField.value = Math.floor(Date.now() / 1000);
+        }
+
+        // Отображаем обратный отсчет
+        var countdown = setInterval(function() {
+            if (timeLeft > 0) {
+                timerMessage.textContent = "Пожалуйста, подождите " + timeLeft + " секунд перед отправкой.";
+                timeLeft--;
+            } else {
+                clearInterval(countdown);
+                submitButton.disabled = false;
+                timerMessage.textContent = "Теперь вы можете отправить форму.";
+            }
+        }, 1000);
+    });
+</script>
