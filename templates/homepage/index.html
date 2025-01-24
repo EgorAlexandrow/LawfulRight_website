@@ -443,7 +443,7 @@
     text-align: left !important;
     font-size: 20px !important;
 }
-.modal-footer {
+.modal-footer, .modal-subfooter {
     display: flex !important;
     flex-direction: row !important;
     justify-content: space-between;
@@ -501,6 +501,9 @@
     right: 160px;
     top: 50%;
     transform: translateY(-50%);
+}
+.modal-subfooter button{
+    display: none;
 }
 @media (max-width: 768px) {
     .block-title {
@@ -676,6 +679,12 @@
     .about-social {
         margin-bottom: 10px;
     }
+    .modal-footer {
+        margin-bottom: 50px;
+    }
+    .modal-subfooter button{
+        display: block;
+    }
 }
 </style>
 <div class="main-page-container">
@@ -736,6 +745,9 @@
                                         <p>или</p>
                                         <a href="tel:+79803500789"><p>8 980 350 07 89</p></a>
                                     </div>
+                                    <div class="modal-subfooter d-flex justify-content-center">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -771,6 +783,9 @@
                                         <a href="mailto:zakonnoe@list.ru" target="_blank" class="modal-footer-mail"><p>zakonnoe@list.ru</p></a>
                                         <p>или</p>
                                         <a href="tel:+79803500789"><p>8 980 350 07 89</p></a>
+                                    </div>
+                                    <div class="modal-subfooter d-flex justify-content-center">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right: 65px;">Закрыть</button>
                                     </div>
                                 </div>
                             </div>
